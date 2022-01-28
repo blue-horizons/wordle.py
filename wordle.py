@@ -4,9 +4,9 @@
 
 import random
 #import pyperclip
-from datetime import datetime
+#from datetime import datetime
 
-date = datetime.now("%d/%m/%Y @ %H:%M")
+#date = datetime.now("%d/%m/%Y @ %H:%M")
 wordList = open("wordle.txt","r")
 
 word = random.choice(wordList.readlines())
@@ -63,7 +63,7 @@ if guess6 == word:
         if choice == "S":
             #print("Copying to clipboard.")
             #pyperclip.copy(correctOut)
-            print(date + "\n" + correctOut)
+            print("\n" + correctOut)
         elif choice == "N":
             repeat = True
         elif choice == "Q":
