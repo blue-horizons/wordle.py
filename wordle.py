@@ -3,7 +3,10 @@
 #setup
 
 import random
+import pyperclip
+import datetime
 
+date = now.strftime("%d/%m/%Y @ %H:%M")
 wordList = open("wordle.txt","r")
 
 word = random.choice(wordList.readlines())
@@ -16,40 +19,52 @@ word = random.choice(wordList.readlines())
 
 
 def guessCheck(word, guess):
-    for x in guess:
-        if guess[x] == word[x]:
-            correct += f"\033[1;40;32m {x}"
-            correctOut += "\u1f7e9" #green square
-        elif guess[x] in word:
-            correct += f"\033[1;40;33m {x}"
-            correctOut += "\u1f7e8"
-        else:
-            correct += f"\033[1;40;30 {x}"
-            correctOut += "\u2b1c"
+    if len(guess) == len(word):
+        for x in guess:
+            if guess[x] == word[x]:
+                correct += f"\033[1;40;32m {x}"
+                correctOut += "\u1f7e9" #green square
+            elif guess[x] in word:
+                correct += f"\033[1;40;33m {x}"
+                correctOut += "\u1f7e8"
+            else:
+                correct += f"\033[1;40;30 {x}"
+                correctOut += "\u2b1c"
 
-    return correct
-    return correctOut
+        return correct
+        return correctOut
 
 
-    guess1 = input()
-    guessCheck(word, guess1)
 
-    guess2 = input()
-    guessCheck(word, guess2)
 
-    guess3 = input()
-    guessCheck(word, guess3)
 
-    guess4 = input()
-    guessCheck(word, guess4)
 
-    guess5 = input()
-    guessCheck(word, guess5)
+guess1 = input()
+guessCheck(word, guess1)
 
-    guess6 = input()
-    guessCheck(word, guess6)
+guess2 = input()
+guessCheck(word, guess2)
+
+guess3 = input()
+guessCheck(word, guess3)
+
+guess4 = input()
+guessCheck(word, guess4)
+
+guess5 = input()
+guessCheck(word, guess5)
+
+guess6 = input()
+guessCheck(word, guess6)
 
 if guess6 == word:
     print("""SUCCESS!! You have solved the wordle.""")
     print(correctOut)
+    print("S Share\nN New\nQ Quit")
+    choice  = input("> ")
+    if choice == "S":
+        print("Copying to clipboard.")
+        pyperclip.copy(correctOut)
+        print("\n" + correctOut)
+
 
