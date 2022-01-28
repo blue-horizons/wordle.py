@@ -6,7 +6,7 @@ import random
 #import pyperclip
 import datetime
 
-date = now.strftime("%d/%m/%Y @ %H:%M")
+date = datetime.now("%d/%m/%Y @ %H:%M")
 wordList = open("wordle.txt","r")
 
 word = random.choice(wordList.readlines())
