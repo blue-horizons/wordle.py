@@ -1,6 +1,6 @@
 # wordle.py
 
-This is a python verson of the popular game.
+This is a python version of the popular game.
 
 Download and extract the files into the same file. 
 Run `wordle.py`
