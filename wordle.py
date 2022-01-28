@@ -49,6 +49,6 @@ def guessCheck(word, guess):
     guessCheck(word, guess6)
 
 if guess == word:
-    print("""SUCCESS!! You have solved the wordle."""
+    print("""SUCCESS!! You have solved the wordle.""")
     print(correctOut)
 
