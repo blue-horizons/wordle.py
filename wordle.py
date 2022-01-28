@@ -4,9 +4,9 @@
 
 import random
 
-wordList = open("wordle.txt")
+wordList = open("wordle.txt","r")
 
-word = random.choice(wordList.readlines)
+word = random.choice(wordList.readlines())
 
 #\033[1;40;32m HIGHLIGHT GREEN
 
@@ -30,6 +30,7 @@ def guessCheck(word, guess):
     return correct
     return correctOut
 
+
     guess1 = input()
     guessCheck(word, guess1)
 
@@ -48,7 +49,7 @@ def guessCheck(word, guess):
     guess6 = input()
     guessCheck(word, guess6)
 
-if guess == word:
+if guess6 == word:
     print("""SUCCESS!! You have solved the wordle.""")
     print(correctOut)
 
