@@ -4,7 +4,7 @@
 
 import random
 #import pyperclip
-import datetime
+from datetime import datetime
 
 date = datetime.now("%d/%m/%Y @ %H:%M")
 wordList = open("wordle.txt","r")
