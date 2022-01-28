@@ -3,7 +3,7 @@
 #setup
 
 import random
-import pyperclip
+#import pyperclip
 import datetime
 
 date = now.strftime("%d/%m/%Y @ %H:%M")
@@ -35,10 +35,6 @@ def guessCheck(word, guess):
         return correctOut
 
 
-
-
-
-
 guess1 = input()
 guessCheck(word, guess1)
 
@@ -60,11 +56,26 @@ guessCheck(word, guess6)
 if guess6 == word:
     print("""SUCCESS!! You have solved the wordle.""")
     print(correctOut)
-    print("S Share\nN New\nQ Quit")
-    choice  = input("> ")
-    if choice == "S":
-        print("Copying to clipboard.")
-        pyperclip.copy(correctOut)
-        print("\n" + correctOut)
+    
+    while choice != "Q":
+        print("S Share\nN New\nQ Quit")
+        choice  = input("> ").lower()
+        if choice == "S":
+            #print("Copying to clipboard.")
+            #pyperclip.copy(correctOut)
+            print(date + "\n" + correctOut)
+        elif choice == "N":
+            repeat = True
+        elif choice == "Q":
+            choice = input("""Sure?
+            y/N""")
+            if choice.lower() == "y":
+                print("closing")
+                quit()
+        else:
+            print("Invalid Option")
+        
+            
+    
 
 
