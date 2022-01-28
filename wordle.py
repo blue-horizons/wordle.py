@@ -24,11 +24,11 @@ def guessCheck(word, guess):
             correct += f"\033[1;40;33m {x}"
             correctOut += "\u1f7e8
         else:
-            correct += f"\033[1;40;30 {x}
+            correct += f"\033[1;40;30 {x}"
             correctOut += "\u2b1c"
 
     return correct
-    return correctOu 
+    return correctOut
 
     guess1 = input()
     guessCheck(word, guess1)
@@ -49,5 +49,6 @@ def guessCheck(word, guess):
     guessCheck(word, guess6)
 
 if guess == word:
-    print(""""SUCCESS!! You have solved the wordle.""")
+    print(""""SUCCESS!! You have solved the wordle.""""
+    print(correctOut)
 
