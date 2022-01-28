@@ -22,7 +22,7 @@ def guessCheck(word, guess):
             correctOut += "\u1f7e9" #green square
         elif guess[x] in word:
             correct += f"\033[1;40;33m {x}"
-            correctOut += "\u1f7e8
+            correctOut += "\u1f7e8"
         else:
             correct += f"\033[1;40;30 {x}"
             correctOut += "\u2b1c"
@@ -49,6 +49,6 @@ def guessCheck(word, guess):
     guessCheck(word, guess6)
 
 if guess == word:
-    print(""""SUCCESS!! You have solved the wordle.""""
+    print("""SUCCESS!! You have solved the wordle."""
     print(correctOut)
 
