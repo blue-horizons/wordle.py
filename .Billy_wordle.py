@@ -1,34 +1,42 @@
-#PYTHON - WORDLESS.PY
+"""PYTHON - WORDLESS.PY
 
-# setup
+setup
+"""
 
 import random
-#import os
-#import time
+import os
+import time
 import sys
+from tkinter import Y
 
 
-#import pyperclip
-#from datetime import datetime
+"""
+import pyperclip
+from datetime import datetime
 
-#date = datetime.now("%d/%m/%Y @ %H:%M")
+date = datetime.now("%d/%m/%Y @ %H:%M")
+"""
+
 wordList = open("wordle.txt", "r")
 print("Words Imported")
 
 word = random.choice(wordList.readlines())
 print("Word Chosen")
-# ANSI Codes
-# \033[1;40;32m HIGHLIGHT GREEN
+"""
+ANSI Codes
 
-# \033[1;40;30m HIGHLIGHT DARK GRAY
+\033[1;40;32m HIGHLIGHT GREEN
 
-# \033[1;40;33m HIGHLIGHT YELLOW
+\033[1;40;30m HIGHLIGHT DARK GRAY
+
+\033[1;40;33m HIGHLIGHT YELLOW
+"""
 ansiTrue = None
-
+guess = ""
+choice = ""
 global correctOut
 global correct
 global correctList
-correctList = []
 
 ansiSupport = input("""
 Do you know if your terminal supports ANSI formatting?
@@ -41,18 +49,15 @@ y/N
 > """)
 
 if ansiSupport.lower() == "y":
-    ansiTrue == True
+    ansiTrue is True
     print("\033[1;40;33m ANSI Colours Enabled")
 
 elif ansiSupport.lower() == "n":
-    ansiTrue == False
+    ansiTrue is False
     print("ANSI Colours not Enabled")
 
 
 def guessCheck(word, guess):
-    global correctOut
-    global correctList
-
     correctOut = ""
     if len(guess) == len(word):
         for x in guess:
@@ -67,8 +72,8 @@ def guessCheck(word, guess):
 
                 print(correctOut)
 
-        print(correctOut)
-        correctList = correctList.append(correctOut)
+        sys.stdout.write(correctOut)
+        correctList.append(correctOut)
         return correctOut
 
 
@@ -80,45 +85,33 @@ def guessCheckANSI(word, guess):
     if len(guess) == len(word) and len(guess) == 5:
         for x in guess:
             if guess[x] == word[x]:
-                #correct += f"\033[1;40;32m {x}"
-                correct.append(x.upper())
+                correct += f"\033[1;40;32m {x}"
                 correctOut += "\u1f7e9"  # green square
             elif guess[x] in word:
-                #correct += f"\033[1;40;33m {x}"
-                correct.append(x.lower())
+                correct += f"\033[1;40;33m {x}"
                 correctOut += "\u1f7e8"  # yellow square
             else:
-                #correct += f"\033[1;40;30 {x}"
-                correct.append("-")
+                correct += f"\033[1;40;30 {x}"
                 correctOut += "\u2b1c"  # Grey/White square
 
         print(correct)
-        correctList = correctList.append(correctOut)
+        correctList.append(correctOut)
         return correctOut
 
 
 def clearLine():
-    print("\033[A     \033[A")
+    print("\033[A                             \033[A")
 
 
 guessNum = 0
 
-print("""Wordle - START
-12345""")
-if ansiSupport == True:
-    for x in range(0, 5):
-        guess = input()
-        # os.system('cls')
-        clearLine()
-        guessCheckANSI(word, guess)
-        guessNum += 1
-else:
-    for x in range(0, 5):
-        guess = input()
-        # os.system('cls')
-        clearLine()
-        guessCheck(word, guess)
-        guessNum += 1
+print("Wordle - START")
+for x in range(0, 5):
+    guess = input()
+    # os.system('cls')
+    clearLine()
+    guessCheck(word, guess)
+    guessNum += 1
 
 """if ansiTrue == False:
     print("Wordle - START")
@@ -185,8 +178,6 @@ elif ansiSupport == True:
     clearLine()
     guessCheckANSI(word, guess6)"""
 
-choice = ""
-
 if guess == word:
     print("""
     
@@ -198,8 +189,10 @@ if guess == word:
         print("S Share\nN New\nQ Quit")
         choice = input("> ").lower()
         if choice == "S":
-            #print("Copying to clipboard.")
-            # pyperclip.copy(correctOut)
+            """
+            print("Copying to clipboard.")
+            pyperclip.copy(correctOut)
+            """
             print("\n" + correctOut)
         elif choice == "N":
             repeat = True
