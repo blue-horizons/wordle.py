@@ -8,15 +8,6 @@ import time
 import sys
 
 
-def loading():
-    print("Loading...")
-    for i in range(0, 100):
-        time.sleep(0.1)
-
-    print
-
-
-loading()
 #import pyperclip
 #from datetime import datetime
 
