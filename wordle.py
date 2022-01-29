@@ -4,6 +4,19 @@
 
 import random
 import os
+import time
+import sys
+
+
+def loading():
+    print("Loading...")
+    for i in range(0, 100):
+        time.sleep(0.1)
+
+    print
+
+
+loading()
 #import pyperclip
 #from datetime import datetime
 
@@ -58,12 +71,13 @@ def guessCheck(word, guess):
 
                 print(correctOut)
 
-        print(correctOut)
+        sys.stdout.write(correctOut)
 
         return correctOut
 
 
 def guessCheckANSI(word, guess):
+    global correctOut
     correctOut = ""
     correct = ""
     if len(guess) == len(word) and len(guess) == 5:
@@ -78,60 +92,78 @@ def guessCheckANSI(word, guess):
                 correct += f"\033[1;40;30 {x}"
                 correctOut += "\u2b1c"  # Grey/White square
 
-        print(correct)
+        sys.stdout.write(correct)
         return correctOut
+
+
+def clearLine():
+    sys.stdout.flush()
+    print("\b")
 
 
 if ansiTrue == False:
     print("Wordle - START")
+
     guess1 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheck(word, guess1)
 
     guess2 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheck(word, guess2)
 
     guess3 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheck(word, guess3)
 
     guess4 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheck(word, guess4)
 
     guess5 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheck(word, guess5)
 
     guess6 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheck(word, guess6)
 
-else:
+elif ansiSupport == True:
     print("\u001b[31mWordle - START")
     guess1 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheckANSI(word, guess1)
 
     guess2 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheckANSI(word, guess2)
 
     guess3 = input()
-    os.system('cls')
+    # os.system('cls')
+    # clearLine()
     guessCheckANSI(word, guess3)
 
     guess4 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheckANSI(word, guess4)
 
     guess5 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheckANSI(word, guess5)
 
     guess6 = input()
-    os.system('cls')
+    # os.system('cls')
+    clearLine()
     guessCheckANSI(word, guess6)
 
 
