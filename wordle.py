@@ -42,6 +42,7 @@ y/N
 if ansiSupport.lower() == "y":
     ansiTrue == True
     print("\033[1;40;33m ANSI Colours Enabled")
+    
 elif ansiSupport.lower() == "n":
     ansiTrue == False
     print("ANSI Colours not Enabled")
