@@ -6,6 +6,7 @@ import random
 import os
 import time
 import sys
+from tkinter import Y
 
 
 #import pyperclip
@@ -27,7 +28,8 @@ ansiTrue = None
 
 global correctOut
 global correct
-
+global correctList
+correctList = []
 
 ansiSupport = input("""
 Do you know if your terminal supports ANSI formatting?
@@ -42,13 +44,16 @@ y/N
 if ansiSupport.lower() == "y":
     ansiTrue == True
     print("\033[1;40;33m ANSI Colours Enabled")
-    
+
 elif ansiSupport.lower() == "n":
     ansiTrue == False
     print("ANSI Colours not Enabled")
 
 
 def guessCheck(word, guess):
+    global correctOut
+    global correctList
+
     correctOut = ""
     if len(guess) == len(word):
         for x in guess:
@@ -64,12 +69,13 @@ def guessCheck(word, guess):
                 print(correctOut)
 
         sys.stdout.write(correctOut)
-
+        correctList = correctList.append(correctOut)
         return correctOut
 
 
 def guessCheckANSI(word, guess):
     global correctOut
+    global correctList
     correctOut = ""
     correct = ""
     if len(guess) == len(word) and len(guess) == 5:
@@ -84,20 +90,30 @@ def guessCheckANSI(word, guess):
                 correct += f"\033[1;40;30 {x}"
                 correctOut += "\u2b1c"  # Grey/White square
 
-        sys.stdout.write(correct)
+        print(correct)
+        correctList = correctList.append(correctOut)
         return correctOut
 
 
 def clearLine():
-    sys.stdout.flush()
-    print("\b")
+    print("\033[A                             \033[A")
 
 
-if ansiTrue == False:
+guessNum = 0
+
+print("Wordle - START")
+for x in range(0, 5):
+    guess = input()
+    # os.system('cls')
+    clearLine()
+    guessCheck(word, guess)
+    guessNum += 1
+
+"""if ansiTrue == False:
     print("Wordle - START")
 
     guess1 = input()
-    # os.system('cls')
+    os.system('cls')
     clearLine()
     guessCheck(word, guess1)
 
@@ -156,11 +172,13 @@ elif ansiSupport == True:
     guess6 = input()
     # os.system('cls')
     clearLine()
-    guessCheckANSI(word, guess6)
+    guessCheckANSI(word, guess6)"""
 
-
-if guess6 == word:
-    print("""SUCCESS!! You have solved the wordle.""")
+if guess == word:
+    print("""
+    
+    
+    SUCCESS!! You have solved the wordle.""")
     print(correctOut)
 
     while choice != "Q":
