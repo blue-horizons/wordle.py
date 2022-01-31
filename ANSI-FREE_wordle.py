@@ -6,7 +6,6 @@ alphabet = list(string.ascii_lowercase)
 words = open("wordle.txt", "r")  # open words list
 
 word = random.choice(words.readlines())  # pick random word
-print("  12345")
 correct = ""
 guesses = 0
 solved = None
@@ -33,7 +32,6 @@ while solved != True:  # or guesses <= 5:
                 print("You Solved The Wordle!!!")
                 solved = True
             elif guess == "#####":
-                print("DEBUG\n")
                 print(word)
                 guesses = 0
             else:

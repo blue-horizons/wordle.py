@@ -1,5 +1,3 @@
-
-
 guess = input("word = ")
 
 word = "hello"
