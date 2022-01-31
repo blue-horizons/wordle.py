@@ -12,14 +12,21 @@ solved = None
 
 while solved != True or guesses <= 5:
     print(correct)
+    correct = ""
+    
     guess = input(str(guesses+1) + " ")  # input for guesses
+    guesses +=1
     for x in range(0, len(guess)):
-        if guess == word:  # guess == word?
+        if guess.lower() == word.lower():  # guess == word?
             correct = word
+            print("You Solved The Wordle!!!")
             solved = True
-            print("you solved the wordle")
+        elif guess == "#####":
+            print("DEBUG\n")
+            print(word)
+            guesses = 0
         else:
-            if guess[x] == word[x]:
+            if guess[x] == word[x] and guess[x] != word[x]:
                 correct = correct + guess[x].upper()
             
             elif guess[x] in word:
@@ -27,6 +34,6 @@ while solved != True or guesses <= 5:
         
             else:
                 correct = correct + "-"
-    guesses += 1
+
         
     
