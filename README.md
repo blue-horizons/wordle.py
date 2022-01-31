@@ -9,4 +9,4 @@ You have 6 tries to get a 5 letter word.<br>
 Green means correct position and letter, Yellow means incorrect position, correct letter and white/ grey means incorrect.<br><br>
 
 Enjoy!<br>
-<sup>Please report any issues in the issues tab, we are aware of some issues and they will be fixed when we can be bothered</sup>
+<sup>Please report any issues in the issues tab, we are aware of some issues and they will be fixed when we can be bothered to bypass some of these temp features have been added</sup>
