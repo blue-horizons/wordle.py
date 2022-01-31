@@ -1,2 +1,2 @@
 @ECHO OFF
-pyinstaller --onefile ANSI-FREE_wordle.py
+pyinstaller --onefile main.py
