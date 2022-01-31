@@ -27,6 +27,6 @@ while solved != True or guesses <= 5:
         
             else:
                 correct = correct + "-"
-        guesses += 1
+    guesses += 1
         
     
