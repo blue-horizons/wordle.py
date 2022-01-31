@@ -1,6 +1,7 @@
 # wordle.py
 
 This is a python version of the popular game.<br><br>
+requires chalk `pip install simple-chalk` or use `dependencies.bat`
 
 Download and extract the files into the same file. <br>
 Run `wordle.py`. <br>
