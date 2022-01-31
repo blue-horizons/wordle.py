@@ -8,5 +8,5 @@ if you do not want to build your own version then download the .exe from release
 You have 6 tries to get a 5 letter word.<br>
 Green means correct position and letter, Yellow means incorrect position, correct letter and white/ grey means incorrect.<br><br>
 
-Enjoy!
+Enjoy!<br>
 <sub><sup>Please report any issues in the issues tab, we are aware of some issues and they will be fixed when we can be bothered</sup></sub>
