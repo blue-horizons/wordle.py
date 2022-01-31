@@ -21,26 +21,31 @@ while solved != True:  # or guesses <= 5:
     for i in range(0, 5):
         print(correct)
         correct = ""
-
+        
+        
         guess = input(str(guesses+1) + " ")  # input for guesses
-        guesses += 1
-        for x in range(0, len(guess)):
-            if guess.lower() == word.lower():  # guess == word?
-                correct = word
-                print("You Solved The Wordle!!!")
-                solved = True
-            elif guess == "#####":
-                print("DEBUG\n")
-                print(word)
-                guesses = 0
-            else:
-                if guess[x] == word[x] and guess[x] != word[x]:
-                    correct = correct + guess[x].upper()
-                    print(alphabet.lower())
-                elif guess[x] in word:
-                    correct = correct + guess[x].lower()
-
+        if guess in words != True:
+            guesses += 1
+            for x in range(0, len(guess)):
+                if guess.lower() == word.lower():  # guess == word?
+                    correct = word
+                    print("You Solved The Wordle!!!")
+                    solved = True
+                    """ elif guess == "#####":
+                    print("DEBUG\n")
+                    print(word)
+                     guesses = 0"""
                 else:
-                    correct = correct + "-"
-                    alphabet = alphabet - guess[x]
-                    print[x]
+                    if guess[x] == word[x] and guess[x] != word[x]:
+                        correct = correct + guess[x].upper()
+                        print(alphabet.lower())
+
+                    elif guess[x] in word:
+                        correct = correct + guess[x].lower()
+                    else:
+                        correct = correct + "-"
+                        alphabet.remove(guess[x])
+                        alphabet.sort()
+                    print[alphabet]
+        else:
+            print("Enter valid 5 letter word")
