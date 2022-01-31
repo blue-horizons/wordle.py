@@ -10,7 +10,7 @@ solved = None
 
 
 
-while solved != True and guesses < 6:
+while solved != True or guesses <= 5:
     print(correct)
     guess = input(str(guesses+1) + " ")  # input for guesses
     for x in guess:
