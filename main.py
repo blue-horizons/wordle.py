@@ -125,7 +125,8 @@ for key, val in freq.items():
 # Main game loop
 while not gameState:
     print("|||||")
-    print("\b")    for guess in range(5):
+    print("\b")   
+    for guess in range(5):
         print(guessedLetters)
         guessedLetters = ''
         guess = input()
