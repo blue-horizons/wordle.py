@@ -78,9 +78,9 @@ def menu():
 
                 # Code here is literally useless just say closing
 
-                # print("\b")  # Once again why the random byte string???
+                # print("\b")
                 # for x in range(4, 0):
-                #     print("\b{x}")  # And here????
+                #     print("\b{x}")
                 #     x -= 1
 
                 quit()
@@ -155,7 +155,7 @@ def run():
                 # Main checks to decide how to catagorize the letters in terms of colours
                 if guess[x] == word[x]:
                     guessedLetters += chalk.green(guess[x].lower())
-                    solvedOut += "\b\b🟩"  # What is with these random byte strings?
+                    solvedOut += "\b\b🟩"
                     continue
                 elif guess[x] in word:
                     guessedLetters += chalk.yellow(guess[x].lower())

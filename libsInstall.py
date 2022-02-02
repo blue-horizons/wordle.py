@@ -8,5 +8,4 @@ reqs = subprocess.check_output([sys.executable, "-m", "pip", "freeze"])
 installed_packages = [r.decode().split("==")[0] for r in reqs.split()]
 print("The following packages:")
 print(installed_packages)
-# Why is this being marked as a byte string?????
 print("\bHave been installed")
