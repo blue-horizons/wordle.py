@@ -39,17 +39,17 @@ def countLetters(letter, string):
 
     return letterCount
 
-"""def menu():
+def menu():
     menuState = False
-    print(""\"Wordle:
+    print("""Wordle:
     S - Share
     N - New
-    Q - Quit"\"")
+    Q - Quit""")
     while not menuState:
         choice = input(">> ")
         if choice[0].lower() == "s":
             print(solvedOut)
-            clipboard = input(""\"Copy to clipboard?\ny/N"\"")
+            clipboard = input("""Copy to clipboard?\ny/N""")
             if clipboard[0].lower() == "y":
                 pyperclip.copy(solvedOut)
                 print("copied to clipboard")
@@ -75,7 +75,7 @@ def countLetters(letter, string):
                     print("\b{x}")
                     x -= 1
 
-                quit()"""
+                quit()
             
 # End Functions ----------------------
 
@@ -108,7 +108,7 @@ word = pickword()
 # DEBUG USE ONLY
     word = random.choice(f.readlines())
 """
-#print(chalk.red(word))
+print(chalk.red(word))
 
 # Work out number of repeated letters in the word
 freq = collections.Counter(word)
@@ -119,7 +119,7 @@ for key, val in freq.items():
         repeated[key] = val
 
 
-#menu()
+menu()
 
 
 # Main game loop
