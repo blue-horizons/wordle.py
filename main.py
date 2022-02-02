@@ -176,18 +176,16 @@ def menu():
                 _ = "clear"
             gameState = False
             menuState = True
+            clear()
         elif choice[0].lower() == "d":
             print("Daily game starting")
             with open(".daily.txt") as f:
                 word = f.readline(2)
 
             sleep(2)
-            if name == "nt":
-                _ = "cls"
-            else:
-                _ = "clear"
             gameState = False
             menuState = True
+            clear()
         elif choice[0].lower() == "q":
             sure = input("Sure?\ny/N\n> ")
             if sure[0].lower() == "y":
@@ -198,14 +196,6 @@ def menu():
                     x -= 1
 
                 quit()
-
-
-
-# Set Daily Word
-
-
-menu()
-
 
 
 # End Functions ----------------------
