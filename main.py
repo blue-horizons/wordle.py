@@ -46,7 +46,7 @@ def countLetters(letter, string):
     return letterCount
 
 
-# Menu Mechanic
+
 
 # Set Daily Word
 def setDaily(todayDate):
@@ -60,66 +60,11 @@ def setDaily(todayDate):
             g.write("{todayDate}/n{word}")
     return word
 
-
-def newWord():
+"""# New word generator
+def pickWord():
     with open(".wordle.txt", "r") as f:
         word = random.choice(f.readlines())
-    return word
-
-
-def menu():
-    menuState = False
-    print("""Wordle:
-    S - Share 
-    N - New 
-    D - Play Daily
-    Q - Quit""")
-    while not menuState:
-        choice = input(">> ")
-        if choice[0].lower() == "s":
-            print(solvedOut)
-            clipboard = input("""Copy to clipboard?\ny/N\n >> """)
-            if clipboard[0].lower() == "y":
-                pyperclip.copy(solvedOut)
-                print("copied to clipboard")
-                continue
-            elif clipboard[0].lower == "n":
-                print("Not Copied")
-                continue
-        elif choice[0].lower() == "n":
-            print("New game starting")
-            newWord()
-
-           
-            sleep(2)
-            if name == "nt":
-                _ = "cls"
-            else:
-                _ = "clear"
-            gameState = False
-            menuState = True
-        elif choice[0].lower() == "d":
-            print("Daily game starting")
-            with open(".daily.txt") as f:
-                word = f.readline(2)
-
-            sleep(2)
-            if name == "nt":
-                _ = "cls"
-            else:
-                _ = "clear"
-            gameState = False
-            menuState = True
-        elif choice[0].lower() == "q":
-            sure = input("Sure?\ny/N\n> ")
-            if sure[0].lower() == "y":
-                print("Closing")
-                print("\b")
-                for x in range(4, 0):
-                    print("\b{x}")
-                    x -= 1
-
-                quit()
+    return word"""
 
 # Open the file with a handle and have it automatically
 # closed after use
@@ -129,13 +74,9 @@ def pickWord():
     with open('.wordle.txt', 'r') as f:
         return random.choice(f.readlines())
 
-# Set Daily Word
-
-
-
-
 
 def run():
+
     # Main game loop
     gameState = False
     word = pickWord()
@@ -202,6 +143,72 @@ def run():
         setDaily(todayDate)
 
 
-# End Functions ----------------------
+def menu():
+    menuState = False
+    print("""Wordle:
+    S - Share 
+    N - New 
+    D - Play Daily
+    Q - Quit""")
+    while not menuState:
+        choice = input(">> ")
+        if choice[0].lower() == "s":
+            
+            print(solvedOut)
+            clipboard = input("""Copy to clipboard?\ny/N\n >> """)
+            if clipboard[0].lower() == "y":
+                pyperclip.copy(solvedOut)
+                print("copied to clipboard")
+                continue
+            elif clipboard[0].lower == "n":
+                print("Not Copied")
+                continue
+        elif choice[0].lower() == "n":
+            print("New game starting")
+            pickWord()
+
+           
+            sleep(2)
+            if name == "nt":
+                _ = "cls"
+            else:
+                _ = "clear"
+            gameState = False
+            menuState = True
+        elif choice[0].lower() == "d":
+            print("Daily game starting")
+            with open(".daily.txt") as f:
+                word = f.readline(2)
+
+            sleep(2)
+            if name == "nt":
+                _ = "cls"
+            else:
+                _ = "clear"
+            gameState = False
+            menuState = True
+        elif choice[0].lower() == "q":
+            sure = input("Sure?\ny/N\n> ")
+            if sure[0].lower() == "y":
+                print("Closing")
+                print("\b")
+                for x in range(4, 0):
+                    print("\b{x}")
+                    x -= 1
+
+                quit()
+
+
+
+# Set Daily Word
+
 
 menu()
+
+
+
+# End Functions ----------------------
+
+
+# Main Code --------------------------
+
