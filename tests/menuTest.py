@@ -1,3 +1,5 @@
+# Pretty sure this is redundant as its already implemented
+
 import pyperclip
 from time import sleep
 
@@ -41,10 +43,11 @@ def menu():
             if sure[0].lower() == "y":
                 print("Closing in ")
                 print("\b")
-                for x in range(4,0):
+                for x in range(4, 0):
                     print("\b{x}")
                     x -= 1
 
                 quit()
-            
+
+
 menu()
