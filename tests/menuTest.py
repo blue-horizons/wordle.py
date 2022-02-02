@@ -61,29 +61,6 @@ def menu():
             if sure[0].lower() == "y":
                 print("Closing")
                 print("\b")
-<<<<<<< HEAD
-                time.sleep(5)
-                quit()
-        elif choice[0].lower() == "d":
-            print("Daily starting")
-            with open("daily.txt","r") as f:
-                lastPlayed = f.readline(0)
-                word = f.readline(1)
-            if lastPlayed == date.today():
-                print("You've already played today's daily Wordle. \nPlease come back tomorrow.")
-            sleep(2)
-            if name == "nt":
-                _ = "cls"
-            else:
-                _ = "clear"
-            gameState = False
-            setDaily()
-
-menu()
-
-print()
-
-=======
                 for x in range(4, 0):
                     print("\b{x}")
                     x -= 1
@@ -92,4 +69,3 @@ print()
 
 
 menu()
->>>>>>> 044f2a40f625f41108e7cdf11fb2e3a0d74a30ce
