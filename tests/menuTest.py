@@ -1,3 +1,5 @@
+# Pretty sure this is redundant as its already implemented
+
 import pyperclip
 from time import sleep
 import random
@@ -59,6 +61,7 @@ def menu():
             if sure[0].lower() == "y":
                 print("Closing")
                 print("\b")
+<<<<<<< HEAD
                 time.sleep(5)
                 quit()
         elif choice[0].lower() == "d":
@@ -80,3 +83,13 @@ menu()
 
 print()
 
+=======
+                for x in range(4, 0):
+                    print("\b{x}")
+                    x -= 1
+
+                quit()
+
+
+menu()
+>>>>>>> 044f2a40f625f41108e7cdf11fb2e3a0d74a30ce
