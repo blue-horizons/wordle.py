@@ -153,7 +153,7 @@ def menu():
     while not menuState:
         choice = input(">> ")
         if choice[0].lower() == "s":
-            
+
             print(solvedOut)
             clipboard = input("""Copy to clipboard?\ny/N\n >> """)
             if clipboard[0].lower() == "y":
@@ -173,7 +173,7 @@ def menu():
                 _ = "cls"
             else:
                 _ = "clear"
-            gameState = False
+            gameState = True
             menuState = True
         elif choice[0].lower() == "d":
             print("Daily game starting")
