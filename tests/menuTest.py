@@ -1,29 +1,47 @@
-# Pretty sure this is redundant as its already implemented
+# Test for the menu() Mechanic
 
-import pyperclip
-from time import sleep
+
 import random
+import pyperclip
+from os import name, system
+from time import sleep
 from datetime import date
+
 solvedOut = """
 ⬜️⬜️🟨⬜️⬜️
 🟩⬜️⬜🟨🟨
 🟩🟩⬜️⬜️🟨
 🟩🟩🟩🟩🟩
 """
+global word
+global gameState
+gameState = True
+global todayDate
+todayDate = date.today()
+
 
 global variables
-variables = {}
+variables = []
 
 
 # Set Daily Word
-def setDaily(todayDate,word):
-    with open("daily.txt", "w") as g, open("wordle.txt","r") as f:
-    
+def setDaily(todayDate):
+    with open(".daily.txt", "w") as g, open(".wordle.txt", "r") as f:
+
         if g.readline(0) == todayDate:
-            close(g)
+            g.close(g)
+            print("Today's wordle has already been completed")
         elif g.readlines != todayDate:
             word = random.choice(f.readlines())
             g.write("{todayDate}/n{word}")
+    return word
+
+
+def newWord():
+    with open(".wordle.txt", "r") as f:
+        word = random.choice(f.readlines())
+    return word
+
 
 def menu():
     menuState = False
@@ -46,7 +64,8 @@ def menu():
                 continue
         elif choice[0].lower() == "n":
             print("New game starting")
-            word = random.choice(f.readlines())
+            newWord()
+
             # DEBUG USE ONLY
             variables.append("word : {word}")
             sleep(2)
@@ -55,6 +74,22 @@ def menu():
             else:
                 _ = "clear"
             gameState = False
+            menuState = True
+            variables.append("gameState : ")
+        elif choice[0].lower() == "d":
+            print("Daily game starting")
+            with open(".daily.txt") as f:
+                word = f.readline(2)
+
+            # DEBUG USE ONLY
+            variables.append("word : {word}")
+            sleep(2)
+            if name == "nt":
+                _ = "cls"
+            else:
+                _ = "clear"
+            gameState = False
+            menuState = True
             variables.append("gameState : ")
         elif choice[0].lower() == "q":
             sure = input("Sure?\ny/N\n> ")
@@ -69,3 +104,6 @@ def menu():
 
 
 menu()
+
+if not gameState:
+    print("Game started\n")
