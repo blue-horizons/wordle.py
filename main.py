@@ -14,11 +14,12 @@ word = ''
 guessedLetters = ''
 guesses = 0
 global gameState
-gameState = False  # False = game in progress, True = guessed or exitted
+gameState = True  # False = game in progress, True = guessed or exitted
 solvedOut = ''
 global todayDate
 todayDate = date.today()
 clearLast = '\b\b\b\b\b\b'
+
 # This allows chalk to work in the windows terminal
 system('')
 
@@ -173,7 +174,7 @@ def menu():
                 _ = "cls"
             else:
                 _ = "clear"
-            gameState = True
+            gameState = False
             menuState = True
         elif choice[0].lower() == "d":
             print("Daily game starting")
