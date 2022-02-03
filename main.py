@@ -17,7 +17,8 @@ global gameState
 gameState = True  # False = game in progress, True = guessed or exitted
 solvedOut = ''
 global todayDate
-todayDate = date.today()
+today = date.today()
+todayDate = today.strftime("%d/%m/%Y")
 clearLast = '\b\b\b\b\b\b'
 
 # This allows chalk to work in the windows terminal
@@ -51,14 +52,17 @@ def countLetters(letter, string):
 
 # Set Daily Word
 def setDaily(todayDate):
-    with open(".daily.txt", "w") as g, open(".wordle.txt", "r") as f:
+    with open(".daily.txt", "r+") as g:
         if g.readline(0) == todayDate:
-            g.close(g)
+            g.close()
             print("Today's wordle has already been completed")
         elif g.readlines != todayDate:
-            word = random.choice(f.readlines())
-            g.write("{todayDate}/n{word}")
-    return word
+            with open(".wordle.txt") as f:
+                word = random.choice(f.readlines())
+            g.seek(0)
+            g.write(f"{todayDate}\n{word}")
+            g.truncate()
+
 
 """# New word generator
 def pickWord():
@@ -96,9 +100,10 @@ def run():
         global guesses
 
         # DEBUG USE ONLY
-        print(chalk.red(word))
+        #print(chalk.red(word))
 
         print("|||||")
+        print("\b")
         print("\b")
         for guess in range(5):
             print(guessedLetters)
@@ -140,7 +145,8 @@ def run():
         print(chalk.red('Game over!'))
         # print(solvedOut) # Pretty sure this is useless as it seems broken??
         gameState = True
-        setDaily(todayDate)
+        setDaily()
+        menu()
 
 
 def menu():
@@ -186,6 +192,7 @@ def menu():
             gameState = False
             menuState = True
             clear()
+            run()
         elif choice[0].lower() == "q":
             sure = input("Sure?\ny/N\n> ")
             if sure[0].lower() == "y":

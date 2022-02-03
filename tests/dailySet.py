@@ -1,5 +1,5 @@
 from datetime import date
-from random import choice
+import random
 
 
 
@@ -15,6 +15,8 @@ with open(".daily.txt", "r+") as g:
         elif g.readlines != todayDate:
             with open(".wordle.txt") as f:
                 word = random.choice(f.readlines())
-            g.write("{todayDate}/n{word}")
+            g.seek(0)
+            g.write(f"{todayDate}\n{word}")
+            g.truncate()
 
-print("word")
+print(word)
