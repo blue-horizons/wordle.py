@@ -52,7 +52,6 @@ def countLetters(letter, string):
 # Set Daily Word
 def setDaily(todayDate):
     with open(".daily.txt", "w") as g, open(".wordle.txt", "r") as f:
-
         if g.readline(0) == todayDate:
             g.close(g)
             print("Today's wordle has already been completed")
@@ -177,6 +176,7 @@ def menu():
             gameState = False
             menuState = True
             clear()
+            run()
         elif choice[0].lower() == "d":
             print("Daily game starting")
             with open(".daily.txt") as f:
@@ -203,3 +203,4 @@ def menu():
 
 # Main Code --------------------------
 
+menu()
