@@ -9,14 +9,11 @@ from time import sleep
 from datetime import date
 
 # Globals
-global word
 word = ''
 guessedLetters = ''
 guesses = 0
-global gameState
 gameState = True  # False = game in progress, True = guessed or exitted
 solvedOut = ''
-global todayDate
 today = date.today()
 todayDate = today.strftime("%d/%m/%Y")
 clearLast = '\b\b\b\b\b\b'
@@ -48,15 +45,13 @@ def countLetters(letter, string):
     return letterCount
 
 
-
-
 # Set Daily Word
 def setDaily(todayDate):
     with open(".daily.txt", "r+") as g:
         if g.readline(0) == todayDate:
-            g.close()
+            # g.close() Stop using this it is unnecessary as it is inside a with block
             print("Today's wordle has already been completed")
-        elif g.readlines != todayDate:
+        elif g.readlines() != todayDate:
             with open(".wordle.txt") as f:
                 word = random.choice(f.readlines())
             g.seek(0)
@@ -100,7 +95,7 @@ def run():
         global guesses
 
         # DEBUG USE ONLY
-        #print(chalk.red(word))
+        # print(chalk.red(word))
 
         print("|||||")
         print("\b")
@@ -145,12 +140,16 @@ def run():
         print(chalk.red('Game over!'))
         # print(solvedOut) # Pretty sure this is useless as it seems broken??
         gameState = True
-        setDaily()
+        setDaily(todayDate)
         menu()
 
 
 def menu():
+    global word
+    global gameState
+
     menuState = False
+
     print("""Wordle:
     S - Share 
     N - New 
@@ -158,23 +157,22 @@ def menu():
     Q - Quit""")
     while not menuState:
         choice = input(">> ")
-        if choice[0].lower() == "s":
+        if choice.lower() == "s":
 
             print(solvedOut)
-            clipboard = input("""Copy to clipboard?\ny/N\n >> """)
-            if clipboard[0].lower() == "y":
+            clipboard = input('Copy to clipboard?\ny/N\n >> ')
+            if clipboard.lower() == "y":
                 pyperclip.copy(solvedOut)
                 print("copied to clipboard")
                 continue
-            elif clipboard[0].lower == "n":
+            elif clipboard.lower == "n":
                 print("Not Copied")
                 continue
-        elif choice[0].lower() == "n":
+        elif choice.lower() == "n":
             print("New game starting")
             pickWord()
 
-           
-            sleep(2)
+            sleep(1)
             if name == "nt":
                 _ = "cls"
             else:
@@ -183,24 +181,25 @@ def menu():
             menuState = True
             clear()
             run()
-        elif choice[0].lower() == "d":
+        elif choice.lower() == "d":
             print("Daily game starting")
             with open(".daily.txt") as f:
                 word = f.readline(2)
 
-            sleep(2)
+            sleep(1)
             gameState = False
             menuState = True
+
             clear()
             run()
-        elif choice[0].lower() == "q":
+        elif choice.lower() == "q":
             sure = input("Sure?\ny/N\n> ")
-            if sure[0].lower() == "y":
-                print("Closing")
-                print("\b")
-                for x in range(4, 0):
-                    print("\b{x}")
-                    x -= 1
+            if sure.lower() == "y":
+                print(chalk.red("Closing..."))
+                # print("\b")
+                # for x in range(4, 0):
+                #     print("\b{x}")
+                #     x -= 1
 
                 quit()
 
@@ -210,4 +209,5 @@ def menu():
 
 # Main Code --------------------------
 
-menu()
+if __name__ == '__main__':
+    menu()
