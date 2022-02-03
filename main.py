@@ -20,7 +20,8 @@ global todayDate
 today = date.today()
 todayDate = today.strftime("%d/%m/%Y")
 clearLast = '\b\b\b\b\b\b'
-
+alphabet = ["a ", "b ", "c ", "d ", "e ", "f ", "g ", "h ", "i ", "j ", "k ", "l ",
+            "m ", "n ", "o ", "p ", "q ", "r ", "s ", "t ", "u ", "v ", "w ", "x ", "y ", "z"]
 # This allows chalk to work in the windows terminal
 system('')
 
@@ -48,10 +49,8 @@ def countLetters(letter, string):
     return letterCount
 
 
-
-
 # Set Daily Word
-def setDaily(todayDate):
+def setDaily():
     with open(".daily.txt", "r+") as g:
         if g.readline(0) == todayDate:
             g.close()
@@ -100,12 +99,12 @@ def run():
         global guesses
 
         # DEBUG USE ONLY
-        #print(chalk.red(word))
+        # print(chalk.red(word))
 
         print("|||||")
         print("\b")
         print("\b")
-        for guess in range(5):
+        for guess in range(6):
             print(guessedLetters)
             guessedLetters = ''
             guess = input()
@@ -139,11 +138,22 @@ def run():
                     print(clearLast)
                 else:
                     guessedLetters += chalk.grey('-')
-                    solvedOut += "\b\b⬜️"
+                    solvedOut += "\b\b⬜"
                 solvedOut += "\n"
+            """    else:
+                    print("Not in word")
+                    sleep(1)
+                    print(""\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"")
+            else:
+                for x in guess:
+                    print("\b")
+                for x in range(50):
+                    print(chalk.yellow("Too Long"))
+                    sleep(2)"""
 
         print(chalk.red('Game over!'))
-        # print(solvedOut) # Pretty sure this is useless as it seems broken??
+        print("Word was " + chalk.blue(word))
+        print(solvedOut)  # To be fixed but game mechanic is priority
         gameState = True
         setDaily()
         menu()
@@ -173,7 +183,6 @@ def menu():
             print("New game starting")
             pickWord()
 
-           
             sleep(2)
             if name == "nt":
                 _ = "cls"
